@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnManual"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/white"
+            android:text="Manual"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:layout_marginRight="30dp"/>
+
+        <Button
+            android:id="@+id/btnCamera"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/purple"
+            android:text="Camera"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:layout_marginLeft="30dp"/>
+    </LinearLayout>
+
+    <!-- Bluetooth Connect Button -->
+    <Button
+        android:id="@+id/btnConnect"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="Search for Bluetooth"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"/>
+
+    <!-- Connection Status -->
+    <TextView
+        android:id="@+id/tvConnectionStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disconnected"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="#FF0000"
+        android:layout_gravity="center"/>
+
+    <!-- Horizontal layout for Image + Joint Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <!-- Robot Image on Left -->
+        <ImageView
+            android:id="@+id/robotImage"
+            android:layout_width="150dp"
+            android:layout_height="300dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/arm" />
+
+        <!-- Joint Controls on Right -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <!-- Gripper -->
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Gripper"
+                android:textSize="14sp"
+                android:textColor="#00796B"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <SeekBar
+                    android:id="@+id/seekGrip"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:min="40"
+                    android:max="90"
+                    android:progress="64"/>
+
+                <TextView
+                    android:id="@+id/tvGripperAngle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="64°"
+                    android:textSize="14sp"
+                    android:textColor="#00796B"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <!-- Wrist -->
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Wrist"
+                android:textSize="14sp"
+                android:textColor="#0288D1"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <SeekBar
+                    android:id="@+id/seekWrist"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:max="180"
+                    android:min="40"
+                    android:progress="90"/>
+
+                <TextView
+                    android:id="@+id/tvWristAngle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="90°"
+                    android:textSize="14sp"
+                    android:textColor="#0288D1"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <!-- Wrist Rotation -->
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Wrist Rot"
+                android:textSize="14sp"
+                android:textColor="#1976D2"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <SeekBar
+                    android:id="@+id/seekWristRotation"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:max="180"
+                    android:min="0"
+                    android:progress="90"/>
+
+                <TextView
+                    android:id="@+id/tvWristRotationAngle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="90°"
+                    android:textSize="14sp"
+                    android:textColor="#1976D2"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <!-- Elbow -->
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Elbow"
+                android:textSize="14sp"
+                android:textColor="#7B1FA2"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <SeekBar
+                    android:id="@+id/seekElbow"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:max="120"
+                    android:min="50"
+                    android:progress="90"/>
+
+                <TextView
+                    android:id="@+id/tvElbowAngle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="90°"
+                    android:textSize="14sp"
+                    android:textColor="#7B1FA2"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <!-- Shoulder -->
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Shoulder"
+                android:textSize="14sp"
+                android:textColor="#D32F2F"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <SeekBar
+                    android:id="@+id/seekShoulder"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:max="100"
+                    android:min="30"
+                    android:progress="49"/>
+
+                <TextView
+                    android:id="@+id/tvShoulderAngle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="49°"
+                    android:textSize="14sp"
+                    android:textColor="#D32F2F"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <!-- Base -->
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Base"
+                android:textSize="14sp"
+                android:textColor="#F57C00"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <SeekBar
+                    android:id="@+id/seekBase"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:max="180"
+                    android:min="0"
+                    android:progress="90"/>
+
+                <TextView
+                    android:id="@+id/tvBaseAngle"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="90°"
+                    android:textSize="14sp"
+                    android:textColor="#F57C00"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Speed Control -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:text="Speed"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#4CAF50"/>
+
+        <SeekBar
+            android:id="@+id/seekSpeed"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:max="6"
+            android:progress="4"/>
+    </LinearLayout>
+
+    <!-- Action Buttons in 2 columns -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnSavePose"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="Save"
+            android:backgroundTint="#8BC34A"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:layout_marginEnd="4dp"/>
+
+        <Button
+            android:id="@+id/btnPlayPose"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="Play"
+            android:backgroundTint="#03A9F4"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_marginTop="4dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnStop"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="Stop"
+            android:backgroundTint="#F44336"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:layout_marginEnd="4dp"/>
+
+        <Button
+            android:id="@+id/btnReset"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:text="Reset"
+            android:backgroundTint="#FFEB3B"
+            android:textColor="#000"
+            android:textSize="12sp"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+    <!-- Loop Playback -->
+    <CheckBox
+        android:id="@+id/checkLoop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loop Playback"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Pose Count Display -->
+    <TextView
+        android:id="@+id/tvPoseCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saved Positions: 0"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"/>
+
+    <!-- Disconnect Button -->
+    <Button
+        android:id="@+id/btnDisconnect"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:text="Disconnect"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#E91E63"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"/>
+</LinearLayout>
